@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini RPG Story Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* For a better dark mode experience */
+      body {
+        background-color: #0f172a; /* slate-900 */
+      }
+      /* Simple fade-in animation */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
+      }
+      /* Print-specific styles for the comic download */
+      @media print {
+        body {
+          background-color: #ffffff;
+        }
+        /* Hide everything except the printable comic area */
+        body > #root > div > main > div > div:not(.printable-comic) {
+          display: none;
+        }
+        header {
+          display: none;
+        }
+        /* Style the printable container */
+        .printable-comic {
+          display: block !important;
+          color: #000000;
+          font-family: sans-serif;
+        }
+        .printable-comic h1 {
+          font-size: 24pt;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .printable-comic .comic-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+        .printable-comic .scene-panel {
+          border: 2px solid #333;
+          padding: 8px;
+          border-radius: 4px;
+          page-break-inside: avoid;
+        }
+        .printable-comic .scene-panel img {
+          width: 100%;
+          height: auto;
+          margin-bottom: 8px;
+        }
+        .printable-comic .scene-panel h3 {
+          font-size: 12pt;
+          font-weight: bold;
+        }
+        .printable-comic .scene-panel p {
+          font-size: 10pt;
+        }
+        .printable-comic .scene-panel blockquote {
+          font-style: italic;
+          border-left: 2px solid #ccc;
+          padding-left: 8px;
+          margin-top: 4px;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
